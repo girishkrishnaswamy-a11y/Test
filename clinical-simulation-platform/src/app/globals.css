@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 15, 23, 42;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 241, 245, 249;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  min-height: 100vh;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-clinical-600 hover:bg-clinical-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-clinical-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2;
+  }
+
+  .btn-success {
+    @apply bg-success-500 hover:bg-success-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-danger {
+    @apply bg-danger-500 hover:bg-danger-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden;
+  }
+
+  .card-header {
+    @apply px-6 py-4 border-b border-gray-100 bg-gray-50;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-clinical-500 focus:border-clinical-500 transition-colors;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-clinical-100 text-clinical-800;
+  }
+
+  .badge-success {
+    @apply bg-success-50 text-success-600;
+  }
+
+  .badge-warning {
+    @apply bg-warning-50 text-warning-600;
+  }
+
+  .badge-danger {
+    @apply bg-danger-50 text-danger-600;
+  }
+
+  .dialogue-bubble {
+    @apply relative p-4 rounded-xl max-w-[85%];
+  }
+
+  .dialogue-bubble-patient {
+    @apply bg-gray-100 text-gray-900 mr-auto;
+  }
+
+  .dialogue-bubble-clinician {
+    @apply bg-clinical-600 text-white ml-auto;
+  }
+
+  .vital-card {
+    @apply bg-white rounded-lg p-3 border border-gray-200 text-center;
+  }
+
+  .vital-value {
+    @apply text-2xl font-bold text-gray-900;
+  }
+
+  .vital-label {
+    @apply text-xs text-gray-500 uppercase tracking-wide;
+  }
+
+  .competency-bar {
+    @apply h-2 rounded-full bg-gray-200 overflow-hidden;
+  }
+
+  .competency-fill {
+    @apply h-full rounded-full transition-all duration-500;
+  }
+
+  .simulation-option {
+    @apply p-4 rounded-lg border-2 border-gray-200 hover:border-clinical-400 cursor-pointer transition-all duration-200 text-left;
+  }
+
+  .simulation-option:hover {
+    @apply bg-clinical-50 shadow-md;
+  }
+
+  .simulation-option-selected {
+    @apply border-clinical-600 bg-clinical-50;
+  }
+
+  .action-card {
+    @apply p-3 rounded-lg border border-gray-200 hover:border-clinical-400 hover:bg-clinical-50 cursor-pointer transition-all duration-200;
+  }
+
+  .progress-ring {
+    @apply transform -rotate-90;
+  }
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+/* Patient avatar pulse for speaking */
+@keyframes speaking {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(14, 165, 233, 0);
+  }
+}
+
+.speaking {
+  animation: speaking 1.5s infinite;
+}
